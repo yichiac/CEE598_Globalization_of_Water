@@ -1,1 +1,1 @@
-# CEE598_Globalization_of_Water
+# CEE598 Globalization of Water Fall 2023
