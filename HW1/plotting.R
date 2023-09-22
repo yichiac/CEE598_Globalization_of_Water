@@ -1,24 +1,26 @@
 library(chorddiag)
 
 data = read.csv("output_matrix.csv")
-matrixdata = as.matrix(data)
+m = as.matrix(data)
 
+countries <- c('Afghanistan', 'Angola', 'Australia', 'Bangladesh', 'Bolivia',
+               'Burkina Faso', 'Burundi', 'Canada', 'Chad', 'China',
+               'Congo', "Côte_d'Ivoire", 'Ecuador', 'Egypt', 'El_Salvador',
+               'Eritrea', 'Ethiopia', 'European Community', 'Ghana', 
+               'Guatemala', 'Guinea', 'Haiti', 'Honduras', 'India', 
+               'Indonesia', 'Iraq', 'Japan', 'Kenya', "North_Korea",
+               'South_Korea', 'Lebanon', 'Liberia', 'Madagascar', 'Malawi', 
+               'Mauritania', 'Mongolia', 'Mozambique', 'Nicaragua', 'Niger', 
+               'Nigeria', 'Occupied_Palestinian_Territory', 'Peru', 
+               'Philippines', 'Rwanda', 'Sierra Leone', 'Somalia', 'Sri Lanka',
+               'Sudan', 'Tajikistan', 'Tanzania', 'Uganda', 'USA', 'Zambia',
+               'Zimbabwe')
 
-# m <- matrix(c(11975,  5871, 8916, 2868,
-#               1951, 10048, 2060, 6171,
-#               8010, 16145, 8090, 8045,
-#               1013,   990,  940, 6907),
-#             byrow = TRUE,
-#             nrow = 4, ncol = 4)
-
-
-# A vector of 4 colors for 4 groups
-countries <- c("black", "blonde", "brown", "red")
-# 
-# dimnames(m) <- list(have = haircolors,
-#                     prefer = haircolors)
-# groupColors <- c("#000000", "#FFDD89", "#957244", "#F26223")
+dimnames(m) <- list(have = countries,
+                    prefer = countries)
 
 # Build the chord diagram:
-p <- chorddiag(m, groupColors = groupColors, groupnamePadding = 20)
+png(file='chord_plot.png')
+p <- chorddiag(m, groupnamePadding = 6, showTicks = F, groupnameFontsize = 8)
 p
+dev.off()
