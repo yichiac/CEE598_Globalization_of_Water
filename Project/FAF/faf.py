@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 
 df_faf = pd.read_csv("county_FIPS_FAF_zone.csv")
