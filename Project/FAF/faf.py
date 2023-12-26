@@ -1,8 +1,11 @@
 import pandas as pd
 
+# df_faf is the file that contains the mapping from county FIPS to CFS07DDGEO
 df_faf = pd.read_csv("county_FIPS_FAF_zone.csv")
-df_ag = pd.read_csv("cluster_analysis_new.csv")
-df_ag = df_ag.drop(df_ag.columns[0], axis=1)
+
+# df_ag is the file that contains the FIPS
+df_ag = pd.read_csv("Withdrawals_2010.csv")
+# df_ag = df_ag.drop(df_ag.columns[0], axis=1)
 
 df_faf['ANSI_ST_CO'] = df_faf['ANSI_ST_CO'].astype(float)
 df_faf['CFS07DDGEO'] = df_faf['CFS07DDGEO'].astype(str).str.zfill(3)
@@ -17,4 +20,4 @@ df_ag['CFS07DDGEO'] = df_ag['Geo_FIPS'].map(county_fips_to_cfs07ddgeo)
 df_ag['Geo_FIPS'] = df_ag['Geo_FIPS'].astype(float).astype(int).astype(str).str.zfill(5)
 
 # Save the new dataframe to a csv file
-df_ag.to_csv("cluster_analysis_new_faf.csv", index=False)
+df_ag.to_csv("Withdrawals_2010_faf.csv", index=False)
